@@ -1,0 +1,19 @@
+{
+  "name": "unstringify-json",
+  "version": "1.0.0",
+  "description": "Simple script to get valid json from its stringified version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aneeshukla/unstringify-json.git"
+  },
+  "author": "Aneesh Shukla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aneeshukla/unstringify-json/issues"
+  },
+  "homepage": "https://github.com/aneeshukla/unstringify-json#readme"
+}
