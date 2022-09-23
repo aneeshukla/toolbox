@@ -1,4 +1,3 @@
-const convert = require('xml-js');
 const fs =  require('fs');
 
 // paste the stringified json here
