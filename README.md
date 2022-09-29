@@ -2,4 +2,5 @@
 
 Paste the stringified JSON in FROM.txt
 
-## npm start
+And then run the following command:
+### npm start
