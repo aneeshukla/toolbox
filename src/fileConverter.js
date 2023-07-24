@@ -1,10 +1,12 @@
 const fs = require('fs');
 
+const utilities = require('./utilities');
+
 const unStringify = () => {
     const type = process.argv[2];
     console.log("Processing ", type)
     // paste the stringified json here
-    var fileContent = readFile(getFromFilePathByType(type));
+    var fileContent = utilities.readFile(getFromFilePathByType(type));
     processByType(type, fileContent);
     console.log("unStringify complete!");
 }
@@ -27,12 +29,16 @@ const processJson = (toFile, fileContent) => {
 
 const processCsv = (toFile, fileContent) => {
     let csvContent = fileContent.slice(1, -1);
+    console.log(csvContent)
     const replaceMap = {
         "\\n": "\n",
         "\\\"": "\""
     };
     for (const [from, to] of Object.entries(replaceMap)) {
-        csvContent = csvContent.replaceAll(from, to);
+        if(typeof csvContent === "string"){
+            csvContent = csvContent.replaceAll(from, to);
+        }
+
     }
 
     fs.writeFileSync(toFile, csvContent, 'utf8');
@@ -44,11 +50,16 @@ const getFromFilePathByType = (type) => {
 }
 
 const getToFilePathByType = (type) => {
-    return `./to/to.${type}`;
+    const fileName = process.argv[3] || "to";
+    return `./to/${fileName}.${type}`;
 }
 
-const readFile = (file) => {
-    return fs.readFileSync(file, 'utf8');
+const getCsvAsTable = () => {
+    csvContent = csvContent.split("\n");
+    csvContent = csvContent.map((row) => {
+        return row.split(',');
+    })
+    console.log(csvContent);
 }
 
 unStringify();
